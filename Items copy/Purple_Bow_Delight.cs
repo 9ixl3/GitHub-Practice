@@ -30,6 +30,13 @@ namespace Test.Items
 			Item.useAmmo = AmmoID.Arrow;
 			Item.shoot = ProjectileID.WoodenArrowFriendly;
 			Item.shootSpeed = 6;
+
+			Lighting.AddLight(Item.Center, 0.75f, 0.75f, 0.75f);
+		}
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
+			// Add the Onfire buff to the NPC for 1 second when the weapon hits an NPC
+			// 60 frames = 1 second
+			target.AddBuff(BuffID.ShadowFlame, 300);
 		}
 
 		public override void AddRecipes()
